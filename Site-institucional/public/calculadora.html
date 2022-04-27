@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImmunCold | Simulador Financeiro</title>
+    <link rel="stylesheet" href="css/style_calculadora.css">
+</head>
+<body>
+
+
+    <div class="header">
+        <div class="container">
+            <p class="title">ImmunCold</p>
+            <ul class="navbar">
+                <li><a href="index.html">Início</a></li>
+                <li><a class="agora"  href="calculadora.html">Simulador</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="banner">
+        <div class="container login">
+           <div class="card-calculadora">
+               <h2>Simulador financeiro</h2>
+               <form>
+                   <label>Quantidade de vacinas vendidas</label>
+                   <input type="number" placeholder="Digite um valor. Ex: 0" id="input_qtda_vacinas_vendidas">
+
+                   <label>Quantidade de vacinas descartadas</label>
+                   <input type="number" placeholder="Digite um valor. Ex: 0" id="input_qtda_vacinas_descartdas">
+
+                   <label>Valor por vacina</label>
+                   <input type="number" placeholder="Digite um valor. Ex: 0" id="input_valor_pago">
+
+                   <button onclick="calcular()">Calcular perda</button>
+               </form>
+           </div>
+
+           <div id="div_resultado"></div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <h5>ImmunCold company. Todos os direitos reservados &copy; 2022</h5>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function calcular() {
+        var vendidas = Number(input_qtda_vacinas_vendidas.value)
+        var descarte = Number(input_qtda_vacinas_descartdas.value)
+        var custoVacina = Number(input_valor_pago.value)
+
+        var valPerdido = descarte * custoVacina
+        var perdaPorc = valPerdido * 0.80
+
+        div_resultado.innerHTML = `Você ou seu cliente perdeu R$ ${valPerdido. toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} sem nossos serviços. 
+        Com a nossa contratação<br> você deixaria de perder 80% deste valor R$ ${perdaPorc. toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}`
+    }
+</script>
